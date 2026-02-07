@@ -10,12 +10,7 @@ type Drop = {
   size: number;
   src: string;
 };
-
-const PARTICLES = [
-  '/particles/diamond.png',
-  '/particles/flower.png',
-  '/particles/star.png',
-];
+const PARTICLES = ['🌹', '🌸', '🌼', '💎', '✨'];
 
 export default function SiPage() {
   const [drops, setDrops] = useState<Drop[]>([]);
