@@ -1,16 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+
+const EMOJIS = ['🌹', '🌸', '🌼', '💎', '✨'];
 
 type Drop = {
   id: number;
   left: number;
   duration: number;
   size: number;
-  src: string;
+  emoji: string;
 };
-const PARTICLES = ['🌹', '🌸', '🌼', '💎', '✨'];
 
 export default function SiPage() {
   const [drops, setDrops] = useState<Drop[]>([]);
@@ -18,11 +18,11 @@ export default function SiPage() {
   useEffect(() => {
     const interval = setInterval(() => {
       const newDrop: Drop = {
-        id: Date.now() + Math.random(),
+        id: Date.now(),
         left: Math.random() * 100,
         duration: 3 + Math.random() * 3,
-        size: 28 + Math.random() * 20,
-        src: PARTICLES[Math.floor(Math.random() * PARTICLES.length)],
+        size: 24 + Math.random() * 20,
+        emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
       };
 
       setDrops(prev => [...prev.slice(-50), newDrop]);
@@ -39,37 +39,28 @@ export default function SiPage() {
         backgroundSize: 'cover',
       }}
     >
-      {/* Partículas */}
+      {/* Emojis cayendo */}
       {drops.map(drop => (
-        <div
+        <span
           key={drop.id}
-          className="absolute animate-fall pointer-events-none"
+          className="absolute animate-fall select-none"
           style={{
             left: `${drop.left}%`,
-            width: drop.size,
-            height: drop.size,
+            fontSize: drop.size,
             animationDuration: `${drop.duration}s`,
           }}
         >
-          <Image
-            src={drop.src}
-            alt=""
-            width={drop.size}
-            height={drop.size}
-            style={{
-              imageRendering: 'pixelated',
-            }}
-          />
-        </div>
+          {drop.emoji}
+        </span>
       ))}
 
-      {/* Mensaje central */}
+      {/* Mensaje */}
       <div className="z-10 bg-white/90 border-4 border-black p-10 shadow-pixel text-center font-minecraft">
         <h1 className="text-4xl minecraft-text mb-4">
           💖 DIJO QUE SÍ 💖
         </h1>
         <p className="text-xl">
-          Nuestro mundo empieza acá 🌸
+          Este mundo ahora es nuestro 🌸
         </p>
       </div>
     </div>
