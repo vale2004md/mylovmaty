@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-const EMOJIS = ['🌹', '🌸', '🌼', '💎', '✨'];
+const EMOJIS = ["🌹", "🌸", "🌼", "💎", "✨"];
 
 type Drop = {
   id: number;
@@ -25,7 +25,7 @@ export default function SiPage() {
         emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
       };
 
-      setDrops(prev => [...prev.slice(-50), newDrop]);
+      setDrops((prev) => [...prev.slice(-50), newDrop]);
     }, 180);
 
     return () => clearInterval(interval);
@@ -35,12 +35,12 @@ export default function SiPage() {
     <div
       className="min-h-screen relative overflow-hidden flex items-center justify-center"
       style={{
-        backgroundImage: 'url(/fondo-minecraft.png)',
-        backgroundSize: 'cover',
+        backgroundImage: "url(/fondo-minecraft.png)",
+        backgroundSize: "cover",
       }}
     >
       {/* Emojis cayendo */}
-      {drops.map(drop => (
+      {drops.map((drop) => (
         <span
           key={drop.id}
           className="absolute animate-fall select-none"
@@ -56,12 +56,16 @@ export default function SiPage() {
 
       {/* Mensaje */}
       <div className="z-10 bg-white/90 border-4 border-black p-10 shadow-pixel text-center font-minecraft">
-        <h1 className="text-4xl minecraft-text mb-4">
-          💖 DIJO QUE SÍ 💖
-        </h1>
-        <p className="text-xl">
-          Este mundo ahora es nuestro 🌸
-        </p>
+        <h1 className="text-4xl minecraft-text mb-4">💖 TE AMO 💖</h1>
+        <p  className="text-lg">Amo compartir esta vida con vos</p>
+        <p className="text-xl">Sos mi mundo entero</p>
+        <div className="flex justify-center items-center">
+          <img
+            src="/nosotros.png"
+            alt="corazon"
+            className="w-20 md:w-32 parpadeo hover:scale-110 transition-transform cursor-pointer"
+          />
+        </div>
       </div>
     </div>
   );
